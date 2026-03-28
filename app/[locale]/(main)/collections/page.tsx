@@ -3,6 +3,7 @@ import { getServerSession } from "@/lib/session"
 import { getAllCollections } from "@/lib/collections-db"
 import { ArtworkCard } from "@/components/gallery/ArtworkCard"
 import { CollectionFormSidebar } from "@/components/collections/CollectionFormSidebar"
+import { CollectionsPagePreview } from "@/components/collections/CollectionsPagePreview"
 
 export default async function CollectionsPage() {
   const t = await getTranslations("collectionsPage")
@@ -32,7 +33,7 @@ export default async function CollectionsPage() {
                   <div className="mb-4">
                     <h2 className="text-xl font-semibold">{collection.title}</h2>
                     {collection.description && (
-                      <p className="text-muted-foreground text-sm mt-1">
+                      <p className="text-muted-foreground text-sm mt-1 whitespace-pre-line">
                         {collection.description}
                       </p>
                     )}
@@ -52,8 +53,11 @@ export default async function CollectionsPage() {
               ))}
             </div>
           ) : (
-            <div className="py-16 text-center">
-              <p className="text-muted-foreground text-lg">{t("noCollections")}</p>
+            <div>
+              <div className="py-8 text-center sm:text-left">
+                <p className="text-muted-foreground text-lg">{t("noCollections")}</p>
+              </div>
+              <CollectionsPagePreview />
             </div>
           )}
         </main>

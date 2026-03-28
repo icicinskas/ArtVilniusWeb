@@ -611,7 +611,43 @@
     "collectionCreated": "Collection created successfully",
     "createError": "Error creating collection",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "preview": {
+      "badge": "Preview: this is how the section will look once the first collection with artworks is published.",
+      "a11yRegionLabel": "Illustration of collection layout",
+      "collectionTitle": "Curated contemporary abstraction",
+      "collectionDescription": "This shows the collection heading (H2) and optional description — several sentences or a short paragraph, as entered in the admin.\n\nA second short block illustrates multi-line formatting.",
+      "artworkExamples": [
+        {
+          "title": "Morning light",
+          "description": "Two-dimensional composition with warm colours and textured ground.",
+          "category": "Painting",
+          "technique": "Oil on canvas",
+          "year": 2022
+        },
+        {
+          "title": "Urban rhythm",
+          "description": "Geometric forms and contrasting colour fields.",
+          "category": "Print",
+          "technique": "Digital print",
+          "year": 2024,
+          "isForSale": true,
+          "price": 450
+        },
+        {
+          "title": "Minimal landscape",
+          "category": "Photography",
+          "year": 2021
+        },
+        {
+          "title": "Studio no. 7",
+          "description": "Longer artwork descriptions are shortened on the page to two lines, so you see the line-clamp effect. In a real collection this might be the artist statement or a curatorial note.",
+          "category": "Installation",
+          "technique": "Mixed media",
+          "year": 2023
+        }
+      ]
+    }
   },
   "artistsPage": {
     "all": "All",

@@ -654,7 +654,43 @@
     "collectionCreated": "Kolekcija sėkmingai sukurta",
     "createError": "Įvyko klaida kuriant kolekciją",
     "save": "Išsaugoti",
-    "cancel": "Atšaukti"
+    "cancel": "Atšaukti",
+    "preview": {
+      "badge": "Pavyzdys: taip atrodys skiltis, kai bus paskelbta pirma kolekcija su kūriniais.",
+      "a11yRegionLabel": "Pavyzdinė kolekcijos išdėstymo iliustracija",
+      "collectionTitle": "Šiuolaikinės abstrakcijos atranka",
+      "collectionDescription": "Čia bus rodomas kolekcijos antraštės pavadinimas (H2) ir neprivalomas aprašymas — gali būti keli sakiniai ar pastraipa, kaip administratoriaus įvestame tekste.\n\nTrumpas antrasis blokas iliustruoja kelių eilučių formatą.",
+      "artworkExamples": [
+        {
+          "title": "Ryto šviesa",
+          "description": "Dvimatis kompozicija su šiltomis spalvomis ir tekstūruotu fonu.",
+          "category": "Tapyba",
+          "technique": "Aliejus drobėje",
+          "year": 2022
+        },
+        {
+          "title": "Miesto ritmas",
+          "description": "Geometrinės formos ir kontrastingi spalvų plotai.",
+          "category": "Grafika",
+          "technique": "Skaitmeninis spauda",
+          "year": 2024,
+          "isForSale": true,
+          "price": 450
+        },
+        {
+          "title": "Minimalus peizažas",
+          "category": "Fotografija",
+          "year": 2021
+        },
+        {
+          "title": "Studija Nr. 7",
+          "description": "Ilgesnis kūrinio aprašymas puslapyje rodomas sutrumpintai — iki dviejų eilučių, todėl matomas „line-clamp“ efektas. Tikroje kolekcijoje čia būtų menininko komentaras ar kuratorinė pastaba.",
+          "category": "Instaliacija",
+          "technique": "Mišri technika",
+          "year": 2023
+        }
+      ]
+    }
   },
   "artistsPage": {
     "all": "Visi",
