@@ -1,0 +1,179 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// SQLite nepalaiko enum tipų, todėl naudojame String
+// Galimos Role reikšmės: GUEST, USER, MODERATOR, ADMIN
+// Galimos OrderStatus reikšmės: PENDING, PROCESSING, SHIPPED, DELIVERED, CANCELLED
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      String   @default("USER")
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orders    Order[]
+  favorites Favorite[]
+  favoriteActions FavoriteAction[]
+  comments  Comment[]
+}
+
+model Exhibition {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  order       Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  artworks Artwork[]
+
+  @@index([order])
+}
+
+model Collection {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  order       Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  artworks Artwork[]
+
+  @@index([order])
+}
+
+model Artwork {
+  id            String    @id @default(cuid())
+  title         String
+  description   String?
+  imageUrl      String
+  imageMetadata String?   // JSON: { width, height, format, originalName } - paieškai ir optimizacijai
+  price         Float?
+  category      String
+  technique     String?
+  dimensions    String?
+  year          Int?
+  isForSale     Boolean   @default(false)
+  isPublished   Boolean   @default(false)
+  exhibitionId  String?
+  collectionId  String?
+  showInShop    Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  exhibition  Exhibition?  @relation(fields: [exhibitionId], references: [id], onDelete: SetNull)
+  collection  Collection?  @relation(fields: [collectionId], references: [id], onDelete: SetNull)
+  favorites   Favorite[]
+  orderItems  OrderItem[]
+  comments    Comment[]
+
+  @@index([exhibitionId])
+  @@index([collectionId])
+}
+
+model Order {
+  id        String   @id @default(cuid())
+  userId    String
+  status    String   @default("PENDING")
+  total     Float
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  user  User       @relation(fields: [userId], references: [id])
+  items OrderItem[]
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  artworkId String
+  quantity  Int      @default(1)
+  price     Float
+  createdAt DateTime @default(now())
+
+  order   Order   @relation(fields: [orderId], references: [id])
+  artwork Artwork @relation(fields: [artworkId], references: [id])
+
+  @@index([orderId])
+  @@index([artworkId])
+}
+
+model Favorite {
+  id        String   @id @default(cuid())
+  userId    String
+  artworkId String
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id])
+  artwork Artwork @relation(fields: [artworkId], references: [id])
+
+  @@unique([userId, artworkId])
+  @@index([userId])
+  @@index([artworkId])
+}
+
+model FavoriteAction {
+  id               String   @id @default(cuid())
+  userId           String
+  targetType       String
+  targetId         String
+  artistFirstName  String?
+  artistLastName   String?
+  artworkTitle     String?
+  artworkArtistName String?
+  createdAt        DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, targetType, targetId])
+  @@index([targetType, targetId])
+  @@index([userId])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  userId    String
+  artworkId String
+  content   String
+  rating    Int?     @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id])
+  artwork Artwork @relation(fields: [artworkId], references: [id])
+
+  @@index([userId])
+  @@index([artworkId])
+}
+
+// NavigationLink modelis nuorodų valdymui
+// location: SIDEBAR, HEADER, FOOTER
+// iconName: lucide-react ikonos pavadinimas (pvz., "Home", "Compass")
+model NavigationLink {
+  id          String   @id @default(cuid())
+  location    String   // SIDEBAR, HEADER, FOOTER
+  href        String
+  translationKey String // translation key (pvz., "home", "gallery")
+  iconName    String?  // lucide-react ikonos pavadinimas
+  order       Int      @default(0) // Rikiavimo tvarka
+  isActive    Boolean  @default(true) // Ar nuoroda aktyvi
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([location])
+  @@index([location, order])
+}
