@@ -2,18 +2,25 @@
 
 import Image from "next/image"
 import { Link } from "@/lib/routing"
+import { cn } from "@/lib/utils"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import type { Artwork } from "@prisma/client"
 
 interface ShopArtworkCardProps {
   artwork: Artwork
+  /** Pavyzdinė iliustracija – kortelė neklickinama ir neveda į detalę */
+  isPreview?: boolean
 }
 
-export function ShopArtworkCard({ artwork }: ShopArtworkCardProps) {
-  return (
-    <Link href={`/shop/${artwork.id}`} className="block h-full">
-      <Card className="group h-full overflow-hidden transition-all hover:shadow-lg">
+export function ShopArtworkCard({ artwork, isPreview = false }: ShopArtworkCardProps) {
+  const card = (
+    <Card
+      className={cn(
+        "group h-full overflow-hidden transition-all hover:shadow-lg",
+        isPreview && "pointer-events-none"
+      )}
+    >
         <div className="relative aspect-square overflow-hidden bg-muted">
           <Image
             src={artwork.imageUrl}
@@ -50,6 +57,15 @@ export function ShopArtworkCard({ artwork }: ShopArtworkCardProps) {
           </CardFooter>
         )}
       </Card>
+  )
+
+  if (isPreview) {
+    return <div className="block h-full">{card}</div>
+  }
+
+  return (
+    <Link href={`/shop/${artwork.id}`} className="block h-full">
+      {card}
     </Link>
   )
 }

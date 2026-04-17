@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server"
 import { getArtworksForSale } from "@/lib/shop"
 import { ShopArtworkCard } from "@/components/shop/ShopArtworkCard"
+import { ShopPagePreview } from "@/components/shop/ShopPagePreview"
 
 export default async function ShopPage() {
   const t = await getTranslations("shopPage")
@@ -20,8 +21,11 @@ export default async function ShopPage() {
           ))}
         </div>
       ) : (
-        <div className="py-16 text-center">
-          <p className="text-muted-foreground text-lg">{t("noArtworks")}</p>
+        <div>
+          <div className="py-8 text-center sm:text-left">
+            <p className="text-muted-foreground text-lg">{t("noArtworks")}</p>
+          </div>
+          <ShopPagePreview />
         </div>
       )}
     </div>

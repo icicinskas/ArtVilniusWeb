@@ -674,7 +674,46 @@
     "subtitle": "Discover unique artworks for your home",
     "noArtworks": "No artworks for sale at the moment. Please check back later.",
     "backToShop": "Back to shop",
-    "addToCart": "Add to cart"
+    "addToCart": "Add to cart",
+    "preview": {
+      "badge": "Preview: this is how the shop grid will look once artworks are published with “show in shop”.",
+      "a11yRegionLabel": "Illustration of shop card layout",
+      "artworkExamples": [
+        {
+          "title": "Morning light",
+          "description": "Two-dimensional composition with warm colours and textured ground.",
+          "category": "Painting",
+          "technique": "Oil on canvas",
+          "year": 2022,
+          "isForSale": true,
+          "price": 890
+        },
+        {
+          "title": "Urban rhythm",
+          "description": "Geometric forms and contrasting colour fields.",
+          "category": "Print",
+          "technique": "Digital graphics",
+          "year": 2024,
+          "isForSale": true,
+          "price": 450
+        },
+        {
+          "title": "Minimal landscape",
+          "description": "No price set — the card appears in the shop grid without a price row.",
+          "category": "Photography",
+          "year": 2021
+        },
+        {
+          "title": "Studio no. 7",
+          "description": "Longer artwork descriptions are shortened on the card to two lines (line-clamp). The card still shows title, category, technique, year, and price formatted to two decimal places.",
+          "category": "Installation",
+          "technique": "Mixed media",
+          "year": 2023,
+          "isForSale": true,
+          "price": 1200.5
+        }
+      ]
+    }
   },
   "educationPage": {
     "subtitle": "Learn and explore the world of art with us. Browse educational activities by year.",

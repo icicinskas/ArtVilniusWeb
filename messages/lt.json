@@ -717,7 +717,46 @@
     "subtitle": "Atraskite unikalius meno kūrinius savo namams",
     "noArtworks": "Šiuo metu parduodamų kūrinių nėra. Grįžkite vėliau.",
     "backToShop": "Grįžti į parduotuvę",
-    "addToCart": "Į krepšelį"
+    "addToCart": "Į krepšelį",
+    "preview": {
+      "badge": "Pavyzdys: taip atrodys parduotuvės tinklas, kai administratorius paskelbs kūrinius su „rodyti parduotuvėje“.",
+      "a11yRegionLabel": "Pavyzdinė parduotuvės kortelių išdėstymo iliustracija",
+      "artworkExamples": [
+        {
+          "title": "Ryto šviesa",
+          "description": "Dvimatis kompozicija su šiltomis spalvomis ir tekstūruotu fonu.",
+          "category": "Tapyba",
+          "technique": "Aliejus drobėje",
+          "year": 2022,
+          "isForSale": true,
+          "price": 890
+        },
+        {
+          "title": "Miesto ritmas",
+          "description": "Geometrinės formos ir kontrastingi spalvų plotai.",
+          "category": "Grafika",
+          "technique": "Skaitmeninė grafika",
+          "year": 2024,
+          "isForSale": true,
+          "price": 450
+        },
+        {
+          "title": "Minimalus peizažas",
+          "description": "Kūrinys be nustatytos kainos (parduotuvėje rodoma kortelė be kainos eilutės).",
+          "category": "Fotografija",
+          "year": 2021
+        },
+        {
+          "title": "Studija Nr. 7",
+          "description": "Ilgesnis kūrinio aprašymas puslapyje rodomas sutrumpintai — iki dviejų eilučių, todėl matomas „line-clamp“ efektas. Kortelėje lieka pavadinimas, kategorija, technika, metai ir kaina € su dviem skaičiais po kablelio.",
+          "category": "Instaliacija",
+          "technique": "Mišri technika",
+          "year": 2023,
+          "isForSale": true,
+          "price": 1200.5
+        }
+      ]
+    }
   },
   "artistsDetail": {
     "present": "Dabartis",
